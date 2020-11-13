@@ -1,6 +1,46 @@
 # Découverte de quelques vulnérablité d'IPv6
 
-## Outils 
+[[_TOC_]]
+
+## Todos
+
+* Corruption de la table NDP
+    * Outil à utiliser (présenter l'outil à utiliser)
+    * Check la doc et exécuter l'attaque depuis le pirate (ajouter notes)
+    * Check le trafic réseau (faire un gif)
+* Introduction de rogues RA sur un réseau IPv6
+    * Outil à utiliser (présenter l'outil à utiliser)
+    * Check la doc et exécuter l'attaque depuis le pirate (ajouter notes)
+    * Check le résultat de l'attaque (faire un gif)
+
+
+## Tableau d'addressage
+
+| Name     | IP            | Gateway      | Description |
+|----------|---------------|--------------|-------------|
+| VM1      | -             | -            | Gateway     |   
+| VM2      | -             | -            | Victime     |   
+| Attacker | -             | -            | Attaquant   | 
+
+## Corruption de la table NDP
+
+### Outil à utiliser
+
+### Notes sur l'attaque
+
+### Résultats
+
+
+## Introduction de rogues RA sur un réseau IPv6
+
+### Outil à utiliser
+
+### Notes sur l'attaque
+
+### Résultats
+
+
+## Les Outils présents dans la suite IPv6ToolKit
 
 ```bash
 addr6: An IPv6 address analysis and manipulation tool.  
