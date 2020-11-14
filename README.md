@@ -2,18 +2,6 @@
 
 [[_TOC_]]
 
-## Todos
-
-* Corruption de la table NDP
-    * Outil à utiliser (présenter l'outil à utiliser)
-    * Check la doc et exécuter l'attaque depuis le pirate (ajouter notes)
-    * Check le trafic réseau (faire un gif)
-* Introduction de rogues RA sur un réseau IPv6
-    * Outil à utiliser (présenter l'outil à utiliser)
-    * Check la doc et exécuter l'attaque depuis le pirate (ajouter notes)
-    * Check le résultat de l'attaque (faire un gif)
-
-
 ## Tableau d'addressage
 
 | Name     | IP            | MAC               | Description |
@@ -53,11 +41,30 @@ On constate donc que :
 ## Introduction de rogues RA sur un réseau IPv6
 
 ### Outil à utiliser
+```
+ra6
+```
 
-### Notes sur l'attaque
+### Commande
+```
+ra6 -i ens3 -d  2001:db8:1:: -P 2001:db8:2:0::/64#LA -L -e
+```
+
+Arguments :
+- **-i** : Network interface
+- **-d** : IPv6 Destination Address (or IPv6 prefix when flooding)
+- **-P** : Prefix option (Prefix/Len#flags#valid#preferred)
+- **-L** : Listen to Router Solicitation messages
+- **-e** : Add Source link-layer address option
 
 ### Résultats
+![Rogue RA](./images/ipv6_rogue_router.gif)
 
+On constate donc que :
+- `vm1` est un routeur (on vérifie son fichier `/etc/radvd.conf`)
+- `vm2` récupère donc sa configuration réseau depuis vm1
+- `attacker` lance la commande ra6 malicieuse pour s'annoncer en tant que routeur
+- Après down et up de l'interface `ens3` de `vm2`, on constate bien que `vm2` a récupéré sa config réseau depuis `attacker`
 
 ## Les Outils présents dans la suite IPv6ToolKit
 
