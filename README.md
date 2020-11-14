@@ -16,11 +16,11 @@
 
 ## Tableau d'addressage
 
-| Name     | IP            | Gateway      | Description |
-|----------|---------------|--------------|-------------|
-| VM1      | -             | -            | Gateway     |   
-| VM2      | -             | -            | Victime     |   
-| Attacker | -             | -            | Attaquant   | 
+| Name     | IP            | Gateway      | Description | MAC               |
+|----------|:-------------:|--------------|-------------|:-----------------:|
+| VM1      | 192.168.33.1  | -            | Gateway     | 00:50:00:00:01:00 |
+| VM2      | 192.168.33.10 | -            | Victime     | 00:50:00:00:04:00 |
+| Attacker | 192.168.33.11 | -            | Attaquant   | 00:50:00:00:05:00 |
 
 ## Corruption de la table NDP
 
